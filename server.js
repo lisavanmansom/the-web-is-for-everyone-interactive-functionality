@@ -53,9 +53,9 @@ app.get('/lessons', function(request, response) {
   });
 })
 
-let favorites = {}
-
 // Maak een POST route voor de lessons pagina
+
+let favorites = {}
 
 app.post('/:playlistId/like-or-unlike', function(request, response) {
     const playlistId = Number(request.params.playlistId);
