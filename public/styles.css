@@ -191,6 +191,27 @@ body {
   background-color: var(--white);
 }
 
+/* ----------------------------------------------------------------- */
+/* styling home-page */
+.home {
+  background-image: url("BG-homepage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  height: 100dvh;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 18px;
+    font-weight: 80;
+    margin: 2em 0 0 0;
+  }
+}
+
+/* ----------------------------------------------------------------- */
 /* styling lessons-page */
 .lessons {
   --bg-method: rgb(20,33,81); background: linear-gradient(0deg, rgba(20,33,81,1) 0%, rgba(71,24,113,1) 100%);

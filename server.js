@@ -44,49 +44,35 @@ app.get('/lessons', function(request, response) {
   fetchJson('https://fdnd-agency.directus.app/items/tm_story'),
   fetchJson('https://fdnd-agency.directus.app/items/tm_language'),
   fetchJson('https://fdnd-agency.directus.app/items/tm_playlist'),
-  fetchJson('https://fdnd-agency.directus.app/items/tm_audio')]).then(([storyData, languageData, playlistData, audioData]) => {
-    response.render('lessons', {stories: storyData.data, 
+  fetchJson('https://fdnd-agency.directus.app/items/tm_audio')]).then(([storyData, languageData, playlistData, audioData]) => { 
+  response.render('lessons', {stories: storyData.data, 
       language: languageData.data,
       playlist: playlistData.data,
-      audio: audioData.data})
+      audio: audioData.data,
+      favorites: favorites})
   });
 })
 
-app.post('/:id/like-or-unlike', function (request, response) {
-    // Step 1: Retrieve the current data for this person from the API
-    fetchJson('https://fdnd-agency.directus.app/items/tm_playlist/' + request.params.id).then((apiResponse) => {
-        // The custom field is a String, so we need to parse it into an Object
-        try {
-            apiResponse.data.playlistData = JSON.parse(apiResponse.data.playlistData);
-        } catch (e) {
-            apiResponse.data.playlistData = {};
-        }
+let favorites = {}
 
-        // Step 2: Add the like to the custom object
-        if (request.body.action == 'like') {
-            apiResponse.data.playlistData.like = true;
-        } else {
-            apiResponse.data.playlistData.like = false;
-        }
+// Maak een POST route voor de lessons pagina
 
-        // Step 3: Update the custom field for this person
-        fetchJson('https://fdnd-agency.directus.app/items/tm_playlist/' + request.params.id, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                playlistData: apiResponse.data.playlistData // property name here
-            }),
-            headers: {'Content-type': 'application/json; charset=UTF-8'}
-
-        }).then((patchResponse) => {
-            // Redirect to the person's page
-            response.redirect(303, '/lessons');
-        });
-        }).catch((error) => {
-        // Handle any errors that occur during the fetch or processing
-        console.error('Error:', error);
-        response.status(500).send('Internal Server Error');
-    });
-});
+app.post('/:playlistId/like-or-unlike', function(request, response) {
+    const playlistId = Number(request.params.playlistId);
+    const action = request.body.action; // Retrieve the value of the 'actie' parameter from the form
+  console.log(action, playlistId)
+    // Implement the logic to handle liking or unliking the playlist
+    if (action === 'like') {
+      // Handle 'like' action
+      favorites[playlistId] = true
+  
+    } else if (action === 'unlike') {
+      favorites[playlistId] = false
+  
+    } 
+    response.redirect(303, '/lessons')
+    })
+  
 
 // 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren
