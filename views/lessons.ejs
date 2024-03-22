@@ -15,7 +15,17 @@
 
 <section>
   <h2>Own playlist</h2>
-  <ul><% playlist.forEach(playlist => { %>
+  <ul>
+    <li> <!-- popup window needs to be added here  -->
+      <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" width="8" height="68" rx="4" fill="white"/>
+        <rect x="68" y="30" width="8" height="68" rx="4" transform="rotate(90 68 30)" fill="white"/>
+        </svg>                        
+        <h4>Make a playlist!</h4>
+        <p>Add your favourite stories in one playlist</p>
+  </li>
+
+    <% playlist.forEach(playlist => { %>
     <li><a>
         
           <img class="playlist-img" src="https://fdnd-agency.directus.app/assets/<%= playlist.image %>" width="100" height="100" 
@@ -32,15 +42,7 @@
       <p>31 min. 55sec</p></div>
 
       </a></li><% }) %>
-    
-      <li> <!-- popup window needs to be added here  -->
-          <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="30" width="8" height="68" rx="4" fill="white"/>
-            <rect x="68" y="30" width="8" height="68" rx="4" transform="rotate(90 68 30)" fill="white"/>
-            </svg>                        
-            <h4>Make a playlist!</h4>
-            <p>Add your favourite stories in one playlist</p>
-      </li></ul>
+      </ul>
 
   <h2>All stories</h2>
 

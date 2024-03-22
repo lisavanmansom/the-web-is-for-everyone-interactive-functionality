@@ -231,6 +231,7 @@ body {
 
     > h1 {
         margin: 2em 0 .75em 0;
+        display: block;
     }
 
     > ol {
@@ -239,6 +240,7 @@ body {
       flex-wrap: nowrap;
       gap: 1.5rem;
       justify-content: flex-start;
+      align-items: start;
       margin: 1em 0 0 0;
       overflow: scroll;
 
@@ -341,7 +343,7 @@ body {
         }
       }
       /* Add playlist list item */
-      > li:nth-last-of-type(1) {
+      > li:first-child {
         align-items: center;
         background-color: #494375;
         display: flex;
