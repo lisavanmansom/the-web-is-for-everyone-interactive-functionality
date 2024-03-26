@@ -18,11 +18,17 @@
   --black: #292929;
 
   /*--------bg---gradient------ */
-  --bg-method: rgb(20,33,81); background: linear-gradient(0deg, rgba(20,33,81,1) 0%, rgba(71,24,113,1) 100%);
-  --bg-statistics: rgb(27,112,112); background: linear-gradient(0deg, rgba(27,112,112,1) 0%, rgba(33,155,155,1) 100%);
-  --bg-testing: rgb(27,61,112); background: linear-gradient(0deg, rgba(27,61,112,1) 0%, rgba(33,89,155,1) 100%);
-  --bg-profile: rgb(180,87,81); background: linear-gradient(0deg, rgba(180,87,81,1) 0%, rgba(240,119,93,1) 100%);
+  --bg-method: rgb(20,33,81);
+  --gr-method: linear-gradient(0deg, rgba(27, 18, 69, 1) 0%, rgba(62, 17, 125, 1) 100%);
 
+  --bg-statistics: rgb(27,112,112);
+  --gr-statistics: linear-gradient(0deg, rgba(27,112,112,1) 0%, rgba(33,155,155,1) 100%);
+
+  --bg-testing: rgb(27,61,112); 
+  --gr-testing: linear-gradient(0deg, rgba(27,61,112,1) 0%, rgba(33,89,155,1) 100%);
+
+  --bg-profile: rgb(180,87,81); 
+  --gr-profile: linear-gradient(0deg, rgba(180,87,81,1) 0%, rgba(240,119,93,1) 100%);
 
   /*--------menubuttons---colours------ */
   --menu-1-1: #3F92B6;
@@ -40,6 +46,11 @@
   --menu-5-1: #FD8C73;
   --menu-5-2: #EA775E;
 
+  --layout-button-1: #784CD6;
+  --layout-button-2: rgba(120, 76, 214, 0.43);
+  --border-button: #8a65db;
+
+
   /*--------menubuttons---colours------ */
   --method-1: #1CB854;
   --method-2: #37C6AB;
@@ -51,6 +62,16 @@
   --radius-1: 16px;
   --radius-2: 8px;
   --radius-3: 4px;
+}
+
+
+@supports ( background: linear-gradient(in oklch, red 0 0) ) {
+  :root {
+    --gr-method: linear-gradient(0deg in oklch, rgba(27, 18, 69, 1) 0%, rgba(62, 17, 125, 1) 100%);
+    --gr-statistics: linear-gradient(0deg in oklch, rgba(27,112,112,1) 0%, rgba(33,155,155,1) 100%);
+    --gr-testing: linear-gradient(0deg in oklch, rgba(27,61,112,1) 0%, rgba(33,89,155,1) 100%);
+    --gr-profile: linear-gradient(0deg in oklch, rgba(180,87,81,1) 0%, rgba(240,119,93,1) 100%);  
+  }
 }
 
 
@@ -209,24 +230,41 @@ body {
     font-weight: 80;
     margin: 2em 0 0 0;
   }
+  .progress-bar {
+    counter-reset: p calc( var(--p) );
+  }
+  .progress-bar::after {
+    content: counter(p) "%";
+    font-variant:tabular-nums;
+  }
+  .progress-bar:hover {
+    --p:100;
+    transition:--p 5s linear;
+  }
+}
+@property --p {
+	syntax:"<number>";
+	inherits:true;
+	initial-value:0;
 }
 
 /* ----------------------------------------------------------------- */
 /* styling lessons-page */
 .lessons {
-  --bg-method: rgb(20,33,81); background: linear-gradient(0deg, rgba(20,33,81,1) 0%, rgba(71,24,113,1) 100%);
   align-items: center;
   background-color: var(--bg-method);
+  background-image: var(--gr-method);
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
   width: 100%;
   /* activity section */
-  > section:nth-of-type(1) {
+  > header {
     align-items: center;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
+    overflow: hidden;
+    height: auto;
     width: 100%;
 
     > h1 {
@@ -241,26 +279,29 @@ body {
       gap: 1.5rem;
       justify-content: flex-start;
       align-items: start;
-      margin: 1em 0 0 0;
+      margin: 1em 0 0 1.2em;
       overflow: scroll;
+      width: 100%;
 
       > li {
         border-radius: var(--radius-2);
         color: var(--white);
         display: flex;
+        height: 3em;
         padding: .75em 1.5em;
         text-wrap: nowrap;
         width: 15em;
         justify-content: space-around;
+        white-space: nowrap;
         align-items: center;
       }
 
       > li:nth-of-type(1) {
-        background-color: #0F672C;
+        background-color: var(--layout-button-1);
       }  
 
       > li:nth-of-type(2) {
-        background-color: #136177;
+        background-color: var(--layout-button-2);
       } 
       }
 
@@ -272,19 +313,23 @@ body {
         content: counter(list-counter) "."; /* insert the counter value as content  + add "." after the number */
         counter-increment: list-counter; /* increment the counter value */
       }
+      > ol li:hover {
+        background-color: var(--border-button);
+        transition: .3s linear;
+      }
 } /* end section 1 */
 
   /* playlist, language, stories section */
-  > section:nth-of-type(2) {
+  > section:nth-of-type(1) {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 3em 0 0 0;
+    margin: 2em 0 0 0;
     overflow-y: hidden;
     width: 100%;
 
     h2 {
-      width: 28vh;
+      width: 11em;
       max-width: 60rem
     }
       /* playlist ul */
@@ -399,12 +444,16 @@ body {
     }
       /*  all stories list */
     > ul:nth-of-type(2) {
-      display: grid;
-      gap: 1.5em;
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: masonry;
-      list-style: none;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 28em;
+      gap: .5em;
+      scroll-snap-type: x mandatory;
+      overflow: scroll;
+
       margin: 1em 0 3em 0;
+      list-style: none;
 
       > li {
         background-color: var(--white);
@@ -412,6 +461,8 @@ body {
         width: 17.5em;
         height: 8.5em;
         position: relative;
+
+        scroll-snap-align: start;
 
         > a {
           display: flex;
@@ -475,13 +526,18 @@ body {
           } 
         } 
       } /* end ul */
+
+    ul::-webkit-scrollbar {
+      display: none;
+    }
+    
     .tab-buttons {
       display: flex;
       flex-direction: row;
       gap: 2em;
 
     > button {
-      background-color: var(--menu-3-1);
+      background-color: var(--layout-button-1);
       color: var(--white);
       font-size: 18px;
       padding: .5em .75em;
@@ -491,11 +547,11 @@ body {
 } /* end section */
 
   /* liked playlist + suggested playlists section */
-  > section:nth-of-type(3) {
+  > section:nth-of-type(2) {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 3em 0 0 0;
+    margin: 2em 0 0 0;
     overflow-y: hidden;
     width: 100%;
 
