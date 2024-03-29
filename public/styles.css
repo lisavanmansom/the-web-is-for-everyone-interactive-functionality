@@ -679,9 +679,11 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 2em 0 0 0;
+    padding: 2em 0 0 0;
     overflow-y: hidden;
     width: 100%;
+
+    background-color: var(--black);
 
     h2 {
       width: 28vh;
@@ -689,19 +691,31 @@ body {
     }
       /* playlist ul */
     > ul:nth-of-type(1), ul:nth-of-type(2) {
-      display: grid;
-      gap: 1.5em;
-      height: auto;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: masonry;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1em;
+      height: 23em;
       margin: 1em 0 3em 0;
 
+      overflow: scroll;
+      width: 100%;
+      scrollbar-width: none;
+
+      scroll-snap-type: x mandatory;
+
       > li {
-        background-color: var(--white);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.418), rgba(124, 90, 196, 0.304));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--method-1-d2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         border-radius: var(--radius-2);
+
         width: 8em;
-        height: 13em;
         list-style: none;
+        position: relative;
 
         > a {
           align-items: center;
@@ -712,22 +726,22 @@ body {
         .playlist-title {
             text-align:left ;
             width: 108px;
-            height: 49px;
+            height: auto;
           }
         }
 
         > a, p {
-          color: var(--black);
+          color: var(--white);
           font-weight: 200;
           text-align: center;
         }
 
         img {
-          border-radius: var(--radius-2);
-          height: 8.5em;
-          margin: 1em 0 .75em 0;
+          border-top-left-radius: var(--radius-2);
+          border-top-right-radius: var(--radius-2);
+          margin: 0em 0 .75em 0;
           object-fit: cover;
-          width: 8.5em;
+          width: 100%;
         }
 
         .play-audio {
@@ -735,6 +749,8 @@ body {
           flex-direction: row;
           gap: .55em;
           margin: .25em 0 0 0;
+     
+          position: absolute; bottom: .5em;
 
           > p {
             margin: .35em 0 0 0;
@@ -744,7 +760,25 @@ body {
           }
         }
       }
+      li:nth-last-of-type(1n) {
+        height: 14em;
+        img {
+          height: 12em;
+        }
+      }
+      li:nth-last-of-type(2n) {
+        height: 7em;
+        img {
+          height: 4em;
+        }
+      }
+      li:nth-last-of-type(3n) {
+        height: 7em;
+        img {
+          height: 4em;
+        }
     } /* end ul */
   } /* end section */
  /* end lessons styling */
+}
 }
