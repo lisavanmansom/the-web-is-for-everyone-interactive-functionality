@@ -1,11 +1,10 @@
 let hamburger = document.querySelector('.hamburger')
-let navMenu = document.querySelector('.navigatie')
+let navMenu = document.querySelector('.desktop')
 
 hamburger.addEventListener("click", () => { 
  navMenu.classList.toggle('nav-active');
- navMenu.classList.toggle('navigatie');
+ navMenu.classList.toggle('desktop');
  hamburger.classList.toggle('active-bar');
-
 
 });
 
