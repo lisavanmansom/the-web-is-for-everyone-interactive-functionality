@@ -39,14 +39,11 @@
 
   --method-2: rgb(20,33,81);
   --method-3: rgba(62, 17, 125, 1);
-
+  
 
   /*--------menubuttons---colours------ */
-  --method-1: #1CB854;
-  --method-2: #37C6AB;
-  --method-3: #059CC0;
-  --method-4: #FF8C59;
-  --method-5: #FFA02E;
+  --home-1: rgb(85, 162, 196);
+
 
   /*--------border---radius------ */
   --radius-1: 16px;
@@ -115,6 +112,11 @@ body {
       width: 5em; height: 4em;
     }
 
+    li:nth-of-type(1) p:hover {
+      color: var(--home-1);
+      transition: .3s linear;
+    }
+
     li:nth-of-type(3) p:hover {
       color: var(--method-1-l);
       transition: .3s linear;
@@ -166,6 +168,10 @@ body {
 .active {
   border-bottom: 1px solid var(--white);
   border-top: 1px solid var(--white);
+}
+
+.active-1 p {
+  color: var(--home-1);
 }
 
 .active-3 p {
@@ -552,7 +558,7 @@ body {
         }
   
         .gallery-item {
-          display: flex;
+          display: -webkit-inline-box;
           justify-content: center;
           align-items: start;
           height: 320px;
@@ -576,8 +582,6 @@ body {
   
          .indicator:hover {
           width: 200px;
-
-          /* margin: 0 .15em; */
       
           .gallery-content {
             display: flex;
