@@ -390,10 +390,11 @@ body {
           flex-direction: column;
           justify-content: center;
 
-        .playlist-title {
+        h4 {
             text-align:left ;
             width: 108px;
             height: 49px;
+            color: var(--black);
           }
         }
 
@@ -537,7 +538,7 @@ body {
     .story-container {
         display: flex;
         flex-wrap: nowrap;
-        height: 22.5em;
+        height: auto;
         width: 100%;
         gap: .5em;
         scroll-snap-type: x mandatory;
@@ -548,10 +549,11 @@ body {
         > .indicator {
             border-radius: var(--radius-2);
             width: 20px;
-            height: 400px;
+            height: auto;
             scroll-snap-align: start;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
             overflow: hidden;
+            margin: 0 0 3em 0;
         }
 
         .gallery {
@@ -562,7 +564,7 @@ body {
         }
 
         .gallery-item {
-            display: -webkit-inline-box;
+            display: flex;
             justify-content: center;
             align-items: start;
             height: 320px;
@@ -593,7 +595,7 @@ body {
                 height: 140px;
                 position: absolute;
                 bottom: 0em;
-                z-index: 10;
+                z-index: 100;
 
                 .story-header {
                     display: flex;
@@ -778,26 +780,72 @@ footer {
 
 @media (min-width:525px) {
 
+  h1  {  font-size: 44px;  }
+  h2  {  font-size: 28px;  }
+  h3  {  font-size: 22px;  }
+  h4  {  font-size: 18px;  }
+  p   {  font-size: 16px;  }
+  a   {  font-size: 16px;  }
+
+
   .lessons {
       display: flex;
 
-        header {
-          display: flex;
+        header {display: flex;
+          ol { align-items: center; display: flex; width: auto; }} 
+          /* end header */     
 
-          ol {
-            align-items: center; display: flex; width: auto;
-           }} /* end header */     
+    section:nth-of-type(1) { 
+      h2 { align-items: center; display: flex; width: auto; }
 
-section:nth-of-type(1) {
-      .story-head {
-        background-color: blueviolet;
+      ul:nth-of-type(1) { gap: 2.5em;
+        li { width: 10em; height: 15.5em;
 
-        h2 {
-          align-items: center; display: flex; width: auto;
+          a { img { height: 7.5em; } 
+              h4 { width: 135px; }
+              .play-audio { width: 135px; justify-content: space-between; margin: .85em 0 0 0;
+                        p { font-size: 12px; }}
+          }
+        }
+
+        li:first-child {
+          p { width: 136px; font-size: 13px; }
+
         }
       }
     }
+    section:nth-of-type(2) { 
+        .story-head { display: flex;
+            h2 { align-items: center; display: flex; width: auto; }
+            form { align-items: center; display: flex; width: auto; }
+        }
+        .story-container {
+        .indicator {
+          .gallery { .gallery-item {
+          height: 350px;
+        }}}
+
+        .story-img { width: 300px; transform: scale(2.5);}
+        .indicator:hover { width: 300px; .gallery { .gallery-item { .gallery-content {
+          width: 300px;
+          height: 155px;
+          .story-header { width: 15.75em;}
+          .story-sum { max-width: 250px;}
+          .sub-buttons { width: 14em; right: 0; left: 1em; bottom: .75em;
+              svg:nth-of-type(1) { margin: .25em 0 0 0;}}
+        }}
+        }}
+
+        }
+    }/* end stories section */
+
+    section:nth-of-type(3) { display: flex;
+      h2 {
+        align-items: center; display: flex; width: auto;
+      }
+      p {
+        align-items: center; display: flex; width: auto; margin: 0;
+      }
+    }
   }
-
-
-    }  
+  }  
