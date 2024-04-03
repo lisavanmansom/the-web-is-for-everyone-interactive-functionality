@@ -652,8 +652,6 @@ body {
     } 
 }  
 
-
-
   /* liked playlist + suggested playlists section */
   > section:nth-of-type(3) {
     align-items: center;
@@ -756,7 +754,39 @@ body {
  /* end lessons styling */
 }
 }
+/* ----------------------------------------------------------------- */
+/* styling allstories-page */
 
+.allstories {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  width: 100%;
+
+  animation: gradient 13s ease infinite;
+  background-size: 200% 200%;
+  background-color: hsla( 0, 0%, 0%,1);
+  background-image:
+    radial-gradient(at 84% 13%, hsla(259,47%,56%,1) 0px, transparent 50%),
+    radial-gradient(at 21% 74%, hsla(265,76%,27%,1) 0px, transparent 50%);
+  header {
+    background-color: chocolate;
+    width: 100%;
+
+    form {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      gap: 1em;
+      width: 100dvw;
+      overflow: scroll;
+      justify-content: start;
+      scroll-snap-type: x mandatory;
+
+  }
+  }
+  }
 
 footer {
   background-color: var(--black);

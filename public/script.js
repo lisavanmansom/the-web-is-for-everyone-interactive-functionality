@@ -10,3 +10,9 @@ hamburger.addEventListener("click", () => {
 
 console.log("test")
 
+// Button stories
+const prevBTN = document.querySelector('.prevBTN')
+const nextBTN = document.querySelector('.nextBTN')
+
+nextBTN.hidden = false
+prevBTN.hidden = false

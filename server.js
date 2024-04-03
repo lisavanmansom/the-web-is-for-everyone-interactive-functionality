@@ -53,6 +53,15 @@ app.get('/lessons', function(request, response) {
   });
 })
 
+app.get('/allstories', function(request, response) {
+  Promise.all([
+  fetchJson('https://fdnd-agency.directus.app/items/tm_story'),
+  fetchJson('https://fdnd-agency.directus.app/items/tm_language')]).then(([storyData, languageData]) => { 
+  response.render('allstories', {stories: storyData.data, 
+      language: languageData.data})
+  });
+})
+
 // Maak een POST route voor de lessons pagina
 
 let favorites = {}
