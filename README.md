@@ -34,7 +34,11 @@ Als gebruiker wil ik een playlist kunnen markeren als favoriet. Dit kan de gebru
 
 ## Kenmerken
 
-Bij deze leertaak heb ik gebruik gemaakt van het principe Progressive Enhancement. Dit houdt in dat je werkt in verschillende lagen.
+Bij deze leertaak heb ik gebruik gemaakt van het principe Progressive Enhancement. Dit houdt in dat je werkt in verschillende lagen. De 3 lagen:
+
+1. Core functionality: de content laag (bijv. HTML)
+2. Layout as an enhancement: de presentatie laag (bijv. basic CSS)
+3. Enhance!: de laatste laag (bijv. extra client-side Javascript)
 
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
