@@ -40,6 +40,11 @@ Bij deze leertaak heb ik gebruik gemaakt van het principe Progressive Enhancemen
 2. Layout as an enhancement: de presentatie laag (bijv. basic CSS)
 3. Enhance!: de laatste laag (bijv. extra client-side Javascript)
 
+Bij deze leertaak heb ik gebruik gemaakt van progressive enhancement. Door progressive enhancement te gebruiken zorg je ervoor dat de 1e laag altijd voor iedereen werkt, ook als de andere lagen niet meer werken.
+
+Ik ben beggonen met het maken van de HTML, ik heb een aantal toevoegingen gedaan deze sprint, zoals een allstories pagina. Voordat ik begin met CSS of Javascript zorg ik ervoor dat alle HTML en EJS correct gerenderd is. Vanuit daar begin ik met het toevoegen van de CSS. Ik heb in CSS gebruik gemaakt van scrollbar-width: none en heb ik ook ::-webkit-scrollbar display: none; gezet zodat het in alle browser hetzelfde eruit ziet. Voor de POST functie ben ik begonnen met het schrijven van de HTML, vervolgens heb ik gezorgd dat de interactie goed werkend is via de server. Toen dat correct was ging ik verder met de CSS en overige enhancements zoals succes states en empty states. Verder heb ik ook buttons die werkend zijn met Java, als java uitstaat dan zien deze buttons niet zichtbaar omdat ze dan geen functie hebben. Tot slot heb ik @supports met oklch in de achtergronden toegepast. Als het niet wordt gesupport door de browser dan komt er een standaard gradient te zien die door de browsers wordt geaccepteerd.
+
+
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
 ## Installatie
