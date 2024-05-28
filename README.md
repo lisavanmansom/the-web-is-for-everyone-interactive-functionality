@@ -52,7 +52,10 @@ Ik ben beggonen met het maken van de HTML, ik heb een aantal toevoegingen gedaan
 * Fork deze repository;
 * Clone de repository op uw eigen apparaat;
 * Gebruik een editor naar keuze.
-
+* Installeer NodeJs
+* Run de command npm install
+* Run de command npm start
+* Klik op de localhost link en begin met coden!
 
 ## Bronnen
 
